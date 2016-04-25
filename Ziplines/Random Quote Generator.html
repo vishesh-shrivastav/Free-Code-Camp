@@ -1,0 +1,37 @@
+<html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<body>
+<section>
+  <header>
+    <h1 class="text-center">Chuck Norris Fact Generator</h1>
+  </header>
+</section>
+<section>
+  <div class="well text-center" id="quote">Quote
+  </div>
+  <div class="container-fluid text-center">
+    <div class="btn-group">
+      <button class="btn btn-default btn-lg" id="gen_btn">Random</button>
+      <a class="btn btn-primary btn-lg" href="#" target="_blank" id="tweet_btn">Tweet</a>
+    </div>
+  </div>  
+</section>
+</body>
+<script>
+$(document).ready(function(){
+  $("#gen_btn").on("click",function(){
+    $.getJSON("http://api.icndb.com/jokes/random",function(q){
+      $("#quote").html(q['value']['joke']);
+        console.log(q);
+	var tweetThis = "https://twitter.com/intent/tweet?text=" + (q['value']['joke']);
+	console.log(tweetThis); 
+        //$("#tweet_btn").attr('href', tweetThis);
+	$("#tweet_btn").on("click",function(){
+	   $("#tweet_btn").attr('href', tweetThis);
+	});	
+    });	 
+  });
+});
+</script>
+</html>
