@@ -8,7 +8,7 @@
   </header>
 </section>
 <section>
-  <div class="well text-center" id="quote">Quote
+  <div class="well text-center" id="quote">
   </div>
   <div class="container-fluid text-center">
     <div class="btn-group">
@@ -20,17 +20,22 @@
 </body>
 <script>
 $(document).ready(function(){
-  $("#gen_btn").on("click",function(){
-    $.getJSON("http://api.icndb.com/jokes/random",function(q){
+$.getJSON("http://api.icndb.com/jokes/random",function(q){
       $("#quote").html(q['value']['joke']);
-        console.log(q);
 	var tweetThis = "https://twitter.com/intent/tweet?text=" + (q['value']['joke']);
-	console.log(tweetThis); 
-        //$("#tweet_btn").attr('href', tweetThis);
 	$("#tweet_btn").on("click",function(){
 	   $("#tweet_btn").attr('href', tweetThis);
 	});	
-    });	 
+    });	 //This loads a random fact as soon as the doucment is ready.
+
+  $("#gen_btn").on("click",function(){
+    $.getJSON("http://api.icndb.com/jokes/random",function(q){
+      $("#quote").html(q['value']['joke']);
+	var tweetThis = "https://twitter.com/intent/tweet?text=" + (q['value']['joke']); 
+	$("#tweet_btn").on("click",function(){
+	   $("#tweet_btn").attr('href', tweetThis);
+	});	
+    });	//This loads a random fact whenever the button is clicked. 
   });
 });
 </script>
