@@ -1,22 +1,48 @@
 <html>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<style>
+/*Using label instead of button so that there are no after-click effects*/
+body {
+  background-image: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.7)), url(https://wallpaperscraft.com/image/missing_in_action_chuck_norris_colonel_braddock_98469_3840x2160.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  
+}
+body {
+ min-height: 100%;
+ min-wwidth: 100%;    
+}
+h1{
+  color: #f2f2f2;
+}
+p{
+  font-family: Verdana, Geneva, sans-serif;
+  color: #ffffff;
+  font-size: 140%;
+}
+	
+</style>
 <body>
 <section>
   <header>
     <h1 class="text-center">Chuck Norris Fact Generator</h1>
   </header>
+  <br>
+  <br>
 </section>
 <section>
-  <div class="well text-center" id="quote">
+  <div class="text-center"><p id="quote"></p>
   </div>
+  <br>
+  <br>
   <div class="container-fluid text-center">
     <div class="btn-group">
-      <label type="button" class="btn btn-default btn-lg" id="gen_btn">Random</label>
-      <a class="btn btn-primary btn-lg" href="#" target="_blank" id="tweet_btn">Tweet</a>
+      <label type="button" class="btn btn-default btn-lg" id="gen_btn">Next Fact</label>
+      <a class="btn btn-primary btn-lg btn-social-icon btn-twitter" href="#" target="_blank" id="tweet_btn"><span class="fa fa-twitter fa-lg"></span></a>
     </div>
   </div>  
-</section>
+</section>  
 </body>
 <script>
 $(document).ready(function(){
