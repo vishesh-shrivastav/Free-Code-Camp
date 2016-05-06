@@ -1,0 +1,50 @@
+<html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<style>
+  h1{
+    margin: 20px 0;
+}
+</style>
+<body>
+<section>
+  <header>
+    <h1 class="text-xs-center">Show the local weather</h1>
+  </header>
+</section>  
+<br>
+<section>
+  <div class= "card card-block">
+  <p class="card-text text-xs-center" id="info"></p>
+  <p class="card-text text-xs-center" id="temperature"></p>
+  <p class="card-text text-xs-center" id="main"></p>
+  <p class="card-text text-xs-center" id="humidity"></p>
+  <p class="card-text text-center" id="a"></p>
+  </div>
+</section>
+</div>
+</body>
+<script>
+var ip_url = "http://ip-api.com/json";
+var weather_url = "http://api.openweathermap.org/data/2.5/weather?"
+var app_id = "a6b2d119ece1cca54788beb1d87b3a51";
+var log_details = function(ip){
+    $("#info").html(ip['city'] + ', ' + ip['regionName'] + ', ' + ip['country']);
+    var latitude = ip['lat'];
+    var longitude = ip['lon'];
+    $.getJSON(weather_url + 'lat='+ latitude + '&lon=' + longitude + '&appid=' + app_id, function disp_weather(x){
+	console.log(x['main']['temp']);
+        console.log(x['name']);
+	console.log(x.weather[0].main);
+        $("#temperature").html("Temperature: " + x['main']['temp']);
+        $("#main").html("Main: " + x.weather[0].main);
+	$("#humidity").html("Humidity: " + x['main']['humidity']);
+	//$("#weather").html(x['main']['temp'] + ", " + x.weather[0].main + ", " + x.weather[0].description);
+      });
+    };
+  
+$(document).ready(function(){
+  $.getJSON(ip_url, log_details);
+});
+</script>
+</html>
